@@ -149,7 +149,7 @@ aws sts get-caller-identity
 
 ---
 
-# Part 1 — Terraform
+# Part 1 — [Terraform](terraform/)
 
 Go to the Terraform directory:
 
@@ -195,7 +195,7 @@ yes
 
 ---
 
-# Terraform Outputs
+# [Terraform Outputs](terraform/output.tf)
 
 After deployment:
 
@@ -349,7 +349,7 @@ ssh ubuntu@10.0.3.225
 
 ---
 
-# Part 4 — Ansible
+# Part 4 — [Ansible](ansible/)
 
 Go to the Ansible directory:
 
@@ -407,7 +407,7 @@ app01 | SUCCESS
 
 ---
 
-# Ansible Playbook
+# [Ansible Playbook](ansible/playbooks/nginx.yaml)
 
 The project uses a playbook to configure the web servers.
 
