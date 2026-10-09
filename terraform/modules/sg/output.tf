@@ -3,6 +3,6 @@ output "sg_name" {
 }
 
 output "sg_id" {
-  value = aws_security_group.ansible_sg.id 
+  value = aws_security_group.ansible_sg.id
 }
 
