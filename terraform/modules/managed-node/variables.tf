@@ -23,6 +23,17 @@ variable "iam_instance_profile" {
 
 
 variable "servers" {
-  type = map(string)
+  type = map(object({
+    tier = string
+    os   = string
+  }))
+  validation {
+    condition = alltrue([
+      for server in values(var.servers) :
+      contains(["web", "app"], server.tier) && contains(["ubuntu", "amazon"], server.os)
+    ])
+    error_message = "Each server must have tier web or app, and os ubuntu or amazon"
+  }
 }
+
 
