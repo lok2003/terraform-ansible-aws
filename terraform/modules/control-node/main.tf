@@ -9,7 +9,7 @@ data "aws_ami" "ubuntu" {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
   }
-   filter {
+  filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
@@ -24,6 +24,14 @@ resource "aws_instance" "ansible" {
   vpc_security_group_ids      = [var.aws_sg]
   key_name                    = aws_key_pair.pub_key.key_name
   iam_instance_profile        = var.iam_instance_profile
+  user_data                   = <<-EOF
+#!/bin/bash
+apt-get update -y
+apt-get install -y software-properties-common
+add-apt-repository --yes --update ppa:ansible/ansible
+apt-get update -y
+apt-get install -y ansible
+EOF
   tags = {
     Name = "Ansible"
   }
