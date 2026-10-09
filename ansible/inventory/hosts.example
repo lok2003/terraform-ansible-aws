@@ -1,10 +1,10 @@
 [web]
-web01 ansible_host=<WEB01_PRIVATE_IP>
-web02 ansible_host=<WEB02_PRIVATE_IP>
+web-amazon ansible_host=<WEB-amazon_PRIVATE_IP> ansible_user=ec2-user 
+web-ubuntu ansible_host=<WEB-ubuntu_PRIVATE_IP> ansible_user=ubuntu
 
 [application]
-app01 ansible_host=<APP01_PRIVATE_IP>
+app-ubuntu ansible_host=<APP-ubuntu_PRIVATE_IP> ansible_user=ubuntu 
 
 [all:vars]
-ansible_user=ubuntu
+
 ansible_ssh_private_key_file=~/.ssh/id_ed25519
