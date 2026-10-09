@@ -54,5 +54,25 @@ variable "key" {
 }
 
 variable "servers" {
-  type = map(string)
+  type = map(object({
+    tier = string
+    os   = string
+  }))
+
+  default = {
+    web-ubuntu = {
+      tier = "web"
+      os   = "ubuntu"
+    }
+
+    app-ubuntu = {
+      tier = "app"
+      os   = "ubuntu"
+    }
+
+    web-amazon = {
+      tier = "web"
+      os   = "amazon"
+    }
+  }
 }
