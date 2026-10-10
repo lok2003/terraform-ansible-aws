@@ -17,27 +17,27 @@ terraform-ansible-aws/
 ├── README.md
 ├── .gitignore
 ├── [terraform](terraform/)
-│   ├── [main.tf](terraform/main.tf)
-│   ├── [variable.tf](terraform/variables.tf)
-│   ├── [output.tf](terraform/output.tf)
-│   ├── [control_node/](terraform/modules/control-node/)
-│   ├── [managed_node/](terraform/modules/managed-node/)
-│   ├── [iam/](terraform/modules/iam/)
-│   ├── [sg/](terraform/modules/sg/)
-│   └── [vpc/](terraform/modules/vpc/)
-└── [ansible/](ansible/)
-    ├── [hosts](ansible/inventory/hosts.example)
-    ├── [nginx.yaml](ansible/playbooks/nginx.yaml)
-    └── [roles/](ansible/roles/)
-        └── [nginx/](ansible/roles/nginx/)
-            ├── [defaults/](ansible/roles/nginx/defaults/)
-            │   └── [main.yaml](ansible/roles/nginx/defaults/main.yaml)
-            ├── [files/](ansible/roles/nginx/files/)
-            ├── [handlers/](ansible/roles/nginx/handlers/)
-            │   └── [main.yaml](ansible/roles/nginx/handlers/main.yaml)
-            ├── [tasks/](ansible/roles/nginx/tasks/)
-            │   └── [main.yaml](ansible/roles/nginx/tasks/main.yaml)
-            └── [templates/](ansible/roles/nginx/templates/)
+│   ├── main.tf
+│   ├── variable.tf
+│   ├── output.tf
+│   ├── control_node/
+│   ├── managed_node/
+│   ├── iam/
+│   ├── sg/
+│   └── vpc/
+└── ansible/
+    ├── hosts
+    ├── nginx.yaml
+    └── roles/
+        └── nginx/
+            ├── defaults/
+            │   └── main.yaml
+            ├── files/
+            ├── handlers/
+            │   └── main.yaml
+            ├── tasks/
+            │   └── main.yaml
+            └── templates/
 ```
 
 ## 1. [Terraform](terraform/) 
