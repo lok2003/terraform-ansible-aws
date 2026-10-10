@@ -1,0 +1,14 @@
+---
+nginx_package: nginx
+unzip_package: unzip
+
+template_url: "https://templatemo.com/tm-zip-files-2020/templatemo_423_artcore.zip"
+
+zip_path: /tmp/artcore.zip
+
+extract_path: /tmp
+
+template_folder: /tmp/templatemo_423_artcore
+
+ubuntu_web_root: /var/www/html/
+amazon_web_root: /usr/share/nginx/html/

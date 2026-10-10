@@ -1,0 +1,68 @@
+---
+- name: Install nginx on Ubuntu
+  ansible.builtin.apt:
+    name:
+      - "{{ nginx_package }}"
+      - "{{ unzip_package }}"
+    state: present
+    update_cache: true
+  when: ansible_facts['os_family'] == "Debian"
+  tags: nginx_install
+
+- name: Install Nginx on Amazon Linux and CentOS
+  ansible.builtin.dnf:
+    name:
+      - "{{ nginx_package }}"
+      - "{{ unzip_package }}"
+    state: present
+  when: ansible_facts['os_family'] == "RedHat"
+  tags: nginx_install
+
+- name: Ensure Nginx is enabled and started
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: Download the website template
+  ansible.builtin.get_url:
+    url: "{{ template_url }}"
+    dest: "{{ zip_path }}"
+    mode: '0644'
+  tags: website_deploy
+- name: Extract website template
+  ansible.builtin.unarchive:
+    src: "{{ zip_path }}"
+    dest: "{{ extract_path }}"
+    remote_src: yes
+  tags: website_deploy
+
+- name: Deploy website on  Ubuntu
+  ansible.builtin.copy:
+    src: "{{ template_folder }}/"
+    dest: "{{ ubuntu_web_root }}"
+    remote_src: yes
+  when: ansible_facts['os_family'] == "Debian"
+  notify: Restart nginx
+  tags: website_deploy
+
+- name: Deploy website on Amazon Linux or Centos
+  ansible.builtin.copy:
+    src: "{{ template_folder }}/"
+    dest: "{{ amazon_web_root }}"
+    remote_src: yes
+  when: ansible_facts['os_family'] == "RedHat"
+  notify: Restart nginx
+  tags: website_deploy
+
+- name: Revoce download ZIP files
+  ansible.builtin.file:
+    path: "{{ zip_path }}"
+    state: absent
+  tags: cleanup
+
+- name: Remove extracted template directory
+  ansible.builtin.file:
+    path: "{{ template_folder }}"
+    state: absent
+  tags: cleanup
