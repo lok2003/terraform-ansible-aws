@@ -1,0 +1,6 @@
+---
+- name: Config tomcat on webservers
+  hosts: web
+  become: yes
+  roles:
+    - tomcat

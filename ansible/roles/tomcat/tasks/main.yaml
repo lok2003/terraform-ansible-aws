@@ -1,0 +1,62 @@
+---
+- name: Install Java on Ubuntu
+  ansible.builtin.apt:
+    name: "{{ java_package_name }}"
+    state: present
+    update_cache: yes
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Insatll java on Amazon Linux
+  ansible.builtin.dnf:
+    name: java-21-amazon-corretto-devel
+    state: present
+  when: ansible_facts['os_family'] == "RedHat"
+
+- name: Create Tomcat group
+  ansible.builtin.group:
+    name: "{{ tomcat_group }}"
+    state: present
+
+- name: Create Tomcat user
+  ansible.builtin.user:
+    name: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    home: "{{ tomcat_home_dir }}"
+    shell: "{{ tomcat_shell }}"
+    create_home: false
+    state: present
+
+- name: Create tomcat installation directory
+  ansible.builtin.file:
+    path: "{{ tomcat_home_dir }}"
+    state: directory
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    mode: '0755'
+
+- name: Download tomcat url
+  ansible.builtin.get_url:
+    url: "{{ tomcat_download_url }}"
+    dest: /tmp/apache-tomcat-10.tar.gz
+    mode: '0644'
+    force: false
+
+- name: Extract Tomcat archive
+  ansible.builtin.unarchive:
+    src: /tmp/apache-tomcat-10.tar.gz
+    dest: "{{ tomcat_home_dir }}"
+    remote_src: true
+    extra_opts:
+      - "--strip-components=1"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    creates: "{{ tomcat_home_dir }}/bin/catalina.sh"
+
+- name: Configure Tomcat systemd service
+  ansible.builtin.template:
+    src: tomcat.service.j2
+    dest: /etc/systemd/system/tomcat.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart Tomcat
