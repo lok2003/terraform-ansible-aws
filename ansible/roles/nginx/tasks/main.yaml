@@ -29,12 +29,15 @@
     url: "{{ template_url }}"
     dest: "{{ zip_path }}"
     mode: '0644'
+    force: false
   tags: website_deploy
+
 - name: Extract website template
   ansible.builtin.unarchive:
     src: "{{ zip_path }}"
     dest: "{{ extract_path }}"
     remote_src: yes
+    creates: /tmp/templatemo_423_artcore/index.html
   tags: website_deploy
 
 - name: Deploy website on  Ubuntu
@@ -54,15 +57,3 @@
   when: ansible_facts['os_family'] == "RedHat"
   notify: Restart nginx
   tags: website_deploy
-
-- name: Revoce download ZIP files
-  ansible.builtin.file:
-    path: "{{ zip_path }}"
-    state: absent
-  tags: cleanup
-
-- name: Remove extracted template directory
-  ansible.builtin.file:
-    path: "{{ template_folder }}"
-    state: absent
-  tags: cleanup
