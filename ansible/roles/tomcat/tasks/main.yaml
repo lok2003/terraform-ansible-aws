@@ -54,9 +54,46 @@
 
 - name: Configure Tomcat systemd service
   ansible.builtin.template:
-    src: tomcat.service.j2
+    src: templates/tomcat.service.j2
     dest: /etc/systemd/system/tomcat.service
     owner: root
     group: root
     mode: "0644"
   notify: Restart Tomcat
+
+- name: Configure Tomcat users and roles
+  ansible.builtin.template:
+    src: templates/tomcat-users.xml.j2
+    dest: "{{ tomcat_home_dir }}/conf/tomcat-users.xml"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    mode: '0640'
+  notify: Restart Tomcat
+
+- name: copy manager context file
+  ansible.builtin.template:
+    src: templates/context.xml.j2
+    dest: "{{ tomcat_home_dir }}/webapps/manager/META-INF/context.xml"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    mode: '0600'
+  notify: Restart Tomcat
+
+- name: copy host-manager context file
+  ansible.builtin.template:
+    src: templates/context.xml.j2
+    dest: "{{ tomcat_home_dir }}/webapps/host-manager/META-INF/context.xml"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    mode: '0600'
+  notify: Restart Tomcat
+
+
+- name: Deploy sample website to Tomcat
+  ansible.builtin.copy:
+    src: sample-site/
+    dest: "{{ tomcat_home_dir }}/webapps/sample/"
+    owner: "{{ tomcat_user }}"
+    group: "{{ tomcat_group }}"
+    mode: "0644"
+    directory_mode: "0755"

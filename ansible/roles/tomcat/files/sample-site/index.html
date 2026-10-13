@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Digital | Modern Tech Agency</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-cube text-white text-lg"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Nexus<span class="text-brand-500">Digital</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-brand-500 transition-colors">Home</a>
+                <a href="#services" class="hover:text-brand-500 transition-colors">Services</a>
+                <a href="#about" class="hover:text-brand-500 transition-colors">About Us</a>
+                <a href="#portfolio" class="hover:text-brand-500 transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-brand-500 transition-colors">Contact</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:flex items-center">
+                <a href="#contact" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-lg shadow-brand-600/25 transition-all transform hover:-translate-y-0.5">
+                    Get Started
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-btn" aria-label="Toggle menu" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-950 border-b border-slate-800 px-6 py-6 space-y-4 shadow-2xl">
+            <a href="#home" class="block text-base font-medium text-slate-300 hover:text-brand-500 mobile-link">Home</a>
+            <a href="#services" class="block text-base font-medium text-slate-300 hover:text-brand-500 mobile-link">Services</a>
+            <a href="#about" class="block text-base font-medium text-slate-300 hover:text-brand-500 mobile-link">About Us</a>
+            <a href="#portfolio" class="block text-base font-medium text-slate-300 hover:text-brand-500 mobile-link">Portfolio</a>
+            <a href="#contact" class="block text-base font-medium text-slate-300 hover:text-brand-500 mobile-link">Contact</a>
+            <div class="pt-4">
+                <a href="#contact" class="block text-center w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-lg shadow-brand-600/25 mobile-link">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-600/10 blur-[150px] rounded-full pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-brand-400 mb-8 shadow-inner">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Next-Gen Digital Solutions for Modern Enterprises
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.1]">
+                We Build Digital <span class="bg-gradient-to-r from-brand-500 to-indigo-300 bg-clip-text text-transparent">Experiences</span> That Matter
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Transform your business with cutting-edge web applications, intelligent cloud architectures, and immersive UI/UX designs engineered for exponential growth.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-xl shadow-brand-600/30 transition-all transform hover:-translate-y-1 text-center">
+                    Start Your Project
+                </a>
+                <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-800 transition-all text-center">
+                    Explore Work
+                </a>
+            </div>
+
+            <!-- Hero Stats Grid -->
+            <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto border-t border-slate-900 pt-12">
+                <div class="p-4 rounded-2xl bg-slate-900/50 border border-slate-800/60">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">99%</div>
+                    <div class="text-xs sm:text-sm text-slate-400 mt-1">Client Satisfaction</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-900/50 border border-slate-800/60">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">250+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 mt-1">Projects Delivered</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-900/50 border border-slate-800/60">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">15+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 mt-1">Global Awards</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-slate-900/50 border border-slate-800/60">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">24/7</div>
+                    <div class="text-xs sm:text-sm text-slate-400 mt-1">Dedicated Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-slate-900/30 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Our Expertise</h2>
+                <h3 class="mt-3 text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Services Engineered for Scalability</h3>
+                <p class="mt-4 text-slate-400 text-base sm:text-lg">We combine strategic thinking with high-end technical craftsmanship to deliver robust digital solutions.</p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Full-Stack Development</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Scalable, high-performance web applications built with modern frameworks like React, Node, and cloud-native architecture.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">UI/UX Design Systems</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Immersive, human-centric design interfaces that elevate brand value and convert visitors into loyal customers.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Cloud & DevOps</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Automated CI/CD pipelines, containerized deployments, and secure infrastructure management on AWS and GCP.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Mobile Applications</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Cross-platform and native mobile apps tailored for iOS and Android with buttery-smooth animations and robust offline support.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Data Analytics & AI</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Actionable business insights powered by machine learning models, custom dashboards, and predictive forecasting engines.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Cybersecurity Audits</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Comprehensive vulnerability assessments, penetration testing, and compliance readiness to protect core digital assets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Who We Are</h2>
+                    <h3 class="mt-3 text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Driven by Passion, Defined by Excellence</h3>
+                    <p class="mt-6 text-slate-400 text-base leading-relaxed">
+                        Nexus Digital was founded with a singular mission: to bridge the gap between complex engineering challenges and elegant user experiences. We are a diverse team of software architects, designers, and strategists collaborating across the globe.
+                    </p>
+                    <p class="mt-4 text-slate-400 text-base leading-relaxed">
+                        Whether you are an ambitious startup scaling your core product or an enterprise giant undertaking a complete digital overhaul, our agile squads integrate seamlessly into your vision.
+                    </p>
+                    <div class="mt-8 grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-500/20 text-brand-500 flex items-center justify-center mt-1 shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold text-sm">Agile Delivery</h5>
+                                <p class="text-xs text-slate-400 mt-0.5">Rapid iteration cycles with full transparency.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-brand-500/20 text-brand-500 flex items-center justify-center mt-1 shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold text-sm">Elite Engineers</h5>
+                                <p class="text-xs text-slate-400 mt-0.5">Top-tier vetted technology talent.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-600 to-indigo-600 rounded-3xl blur-2xl opacity-20"></div>
+                    <div class="relative bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-600/20 text-brand-500 flex items-center justify-center text-xl font-bold">01</div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Discovery & Blueprinting</h4>
+                                <p class="text-slate-400 text-sm">Deep dive into user research and technical constraints.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-600/20 text-brand-500 flex items-center justify-center text-xl font-bold">02</div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Rapid Prototyping & Design</h4>
+                                <p class="text-slate-400 text-sm">Interactive UI mockups and design system tokens.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-600/20 text-brand-500 flex items-center justify-center text-xl font-bold">03</div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Agile Build & Scale</h4>
+                                <p class="text-slate-400 text-sm">Production-ready code with continuous deployment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 bg-slate-900/30 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Case Studies</h2>
+                <h3 class="mt-3 text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Recent Digital Masterpieces</h3>
+                <p class="mt-4 text-slate-400 text-base sm:text-lg">Explore how we helped visionary founders and brands transform industries.</p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="group rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all">
+                    <div class="h-48 bg-gradient-to-br from-indigo-900 via-slate-900 to-brand-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                        <i class="fa-solid fa-chart-pie text-brand-400 text-5xl group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-400 uppercase tracking-widest">Fintech SaaS</span>
+                        <h4 class="text-xl font-bold text-white mt-1 mb-2">Aura Financial Dashboard</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">Real-time multi-currency treasury management suite for global remote teams.</p>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-400 hover:text-brand-300">
+                            View Case Study <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="group rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all">
+                    <div class="h-48 bg-gradient-to-br from-purple-900 via-slate-900 to-indigo-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                        <i class="fa-solid fa-bag-shopping text-brand-400 text-5xl group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-400 uppercase tracking-widest">E-Commerce</span>
+                        <h4 class="text-xl font-bold text-white mt-1 mb-2">Verve Luxury Retail</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">Headless commerce storefront delivering sub-second page loads at scale.</p>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-400 hover:text-brand-300">
+                            View Case Study <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="group rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all">
+                    <div class="h-48 bg-gradient-to-br from-blue-900 via-slate-900 to-teal-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                        <i class="fa-solid fa-heart-pulse text-brand-400 text-5xl group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-400 uppercase tracking-widest">HealthTech</span>
+                        <h4 class="text-xl font-bold text-white mt-1 mb-2">MedSync Telehealth App</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">HIPAA-compliant video consultation and diagnostic record management system.</p>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-400 hover:text-brand-300">
+                            View Case Study <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 border-t border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Get in Touch</h2>
+                    <h3 class="mt-3 text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Let's Build Something Exceptional Together</h3>
+                    <p class="mt-4 text-slate-400 text-base leading-relaxed">
+                        Ready to accelerate your product roadmap or discuss your next big digital initiative? Drop us a message and our team will get back to you within 24 hours.
+                    </p>
+
+                    <div class="mt-8 space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 text-brand-500 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-slate-400 text-xs font-medium">Email Us</h5>
+                                <p class="text-white font-semibold">contact@nexusdigital.io</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 text-brand-500 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-slate-400 text-xs font-medium">Call Us</h5>
+                                <p class="text-white font-semibold">+1 (555) 389-4920</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 text-brand-500 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-slate-400 text-xs font-medium">Headquarters</h5>
+                                <p class="text-white font-semibold">742 Evergreen Terrace, Silicon Valley, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl relative">
+                    <!-- Success Notification Box (Hidden by default) -->
+                    <div id="form-success" class="hidden mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-lg"></i>
+                        <span>Thank you! Your message has been sent successfully. We will be in touch shortly.</span>
+                    </div>
+
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Name</label>
+                                <input type="text" id="name" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Email Address</label>
+                                <input type="email" id="email" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Subject</label>
+                            <input type="text" id="subject" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="Project Inquiry / Partnership">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Message</label>
+                            <textarea id="message" rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="Tell us about your project goals and timeline..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm shadow-xl shadow-brand-600/30 transition-all transform hover:-translate-y-0.5">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white">
+                    <i class="fa-solid fa-cube text-sm"></i>
+                </div>
+                <span class="text-base font-bold text-white">Nexus Digital</span>
+            </div>
+            <p class="text-slate-500 text-xs">&copy; 2026 Nexus Digital Agency Inc. All rights reserved.</p>
+            <div class="flex items-center gap-4 text-slate-400">
+                <a href="#" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-twitter text-lg"></i></a>
+                <a href="#" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                <a href="#" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-github text-lg"></i></a>
+                <a href="#" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-discord text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Contact Form Submission Simulation
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Show success message box
+            formSuccess.classList.remove('hidden');
+
+            // Reset form fields
+            contactForm.reset();
+
+            // Hide message after 6 seconds
+            setTimeout(() => {
+                formSuccess.classList.add('hidden');
+            }, 6000);
+        });
+    </script>
+</body>
+</html>

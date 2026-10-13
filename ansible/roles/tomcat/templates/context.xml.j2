@@ -1,18 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tomcat-users xmlns="http://tomcat.apache.org/xml"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
-              version="1.0">
-
-    <role rolename="manager-gui"/>
-    <role rolename="admin-gui"/>
-
-    <user username="{{ manager_username }}"
-          password="{{ manager_password }}"
-          roles="manager-gui"/>
-
-    <user username="{{ admin_username }}"
-          password="{{ admin_password }}"
-          roles="manager-gui,admin-gui"/>
-
-</tomcat-users>
+<Context antiResourceLocking="false" privileged="true" >
+  <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor"
+                   sameSiteCookies="strict" />
+  <Valve className="org.apache.catalina.valves.RemoteCIDRValve"
+         allow="{{ allow_cidr }}" />
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+</Context>

@@ -18,4 +18,4 @@ admin_username: admin
 
 admin_password: admin@123
 
-allow_cidr: ".*"
+allow_cidr: 0.0.0.0/0
