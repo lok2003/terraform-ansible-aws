@@ -16,28 +16,52 @@ This project demonstrates how to provision AWS EC2 instances using **Terraform**
 terraform-ansible-aws/
 ├── README.md
 ├── .gitignore
-├── [terraform](terraform/)
+├── terraform/
 │   ├── main.tf
-│   ├── variable.tf
-│   ├── output.tf
-│   ├── control_node/
-│   ├── managed_node/
-│   ├── iam/
-│   ├── sg/
-│   └── vpc/
+│   ├── variables.tf
+│   ├── outputs.tf
+│   └── modules/
+│       ├── control-node/
+│       ├── managed-node/
+│       ├── iam/
+│       ├── sg/
+│       └── vpc/
 └── ansible/
-    ├── hosts
-    ├── nginx.yaml
+    ├── ansible.cfg
+    ├── inventory/
+    │   ├── hosts
+    │   └── hosts.example
+    ├── group_vars/
+    │   └── vars.yaml
+    ├── playbooks/
+    │   ├── nginx.yaml
+    │   └── tomcat.yaml
     └── roles/
-        └── nginx/
+        ├── nginx/
+        │   ├── defaults/
+        │   │   └── main.yaml
+        │   ├── files/
+        │   ├── handlers/
+        │   │   └── main.yaml
+        │   ├── tasks/
+        │   │   └── main.yaml
+        │   └── templates/
+        └── tomcat/
             ├── defaults/
             │   └── main.yaml
             ├── files/
+            │   └── sample-site/
+            │       └── index.html
             ├── handlers/
             │   └── main.yaml
             ├── tasks/
             │   └── main.yaml
-            └── templates/
+            ├── templates/
+            │   ├── context.xml.j2
+            │   ├── tomcat-users.xml.j2
+            │   └── tomcat.service.j2
+            └── vars/
+                └── main.yaml
 ```
 
 ## 1. [Terraform](terraform/) 
@@ -160,7 +184,7 @@ The role uses Ansible facts to select the correct package manager and web root:
 ### Run the playbook
 
 ```bash
-ansible-playbook -i hosts nginx.yaml
+ansible-playbook -i inventory/hosts playbooks/nginx.yaml
 ```
 
 ### Run specific tasks using tags
@@ -168,25 +192,29 @@ ansible-playbook -i hosts nginx.yaml
 Install Nginx:
 
 ```bash
-ansible-playbook -i hosts nginx.yaml --tags nginx_install
+ansible-playbook -i inventory/hosts playbooks/nginx.yaml --tags nginx_install
 ```
 
 Deploy the website:
 
 ```bash
-ansible-playbook -i hosts nginx.yaml --tags website_deploy
+ansible-playbook -i inventory/hosts playbooks/nginx.yaml --tags nginx_install
+
+Deploy the website:
+
+ansible-playbook -i inventory/hosts playbooks/nginx.yaml --tags website_deploy
 ```
 
 Clean up temporary download and extraction files:
 
 ```bash
-ansible-playbook -i hosts nginx.yaml --tags cleanup
+ansible-playbook -i inventory/hosts playbooks/nginx.yaml --tags cleanup
 ```
 
 List available tags:
 
 ```bash
-ansible-playbook -i hosts nginx.yaml --list-tags
+ansible-playbook -i inventory/hosts playbooks/nginx.yaml --list-tags
 ```
 
 **Important:** The website deployment tag must include its download and extraction prerequisites so the template files are available when deployment runs.
@@ -196,17 +224,95 @@ ansible-playbook -i hosts nginx.yaml --list-tags
 Check the Nginx service:
 
 ```bash
-ansible -i hosts web -b -m command -a "systemctl is-active nginx"
+ansible -i inventory/hosts web -b -m command -a "systemctl is-active nginx"
 ```
 
 Verify the deployed HTML title:
 
 ```bash
-ansible -i hosts web -b -m shell -a 'curl -s http://localhost | grep -m1 "<title>"'
+ansible -i inventory/hosts web -b -m shell -a 'curl -s http://localhost | grep -m1 "<title>"'
 ```
 
 You should see the expected website title from the deployed template on each web server.
 
+
+The role demonstrates how Ansible can install application-server software, manage configuration files, control services, and deploy website content.
+
+# Current implementation
+
+* Install and configure Java and Apache Tomcat.
+
+* Install Tomcat under /opt/tomcat.
+
+* Create and manage a tomcat.service systemd service.
+
+* Start and enable the Tomcat service.
+
+* Configure Tomcat users and roles using tomcat-users.xml.j2.
+
+* Configure Manager and Host Manager context files using context.xml.j2.
+
+* Use Ansible handlers to restart Tomcat when relevant configuration files change.
+
+* Deploy website files into Tomcat's webapps directory.
+
+* Use Ansible templates, variables, defaults, and role tasks.
+
+# [Run the Tomcat playbook](ansible/roles/tomcat/)
+
+Run from the Ansible project directory:
+```sh
+ansible-playbook -i inventory/hosts playbooks/tomcat.yaml
+```
+
+Preview changes before applying them:
+```sh
+ansible-playbook -i inventory/hosts playbooks/tomcat.yaml --check
+```
+Check connectivity to all managed hosts:
+```sh
+ansible -i inventory/hosts all -m ping
+```
+
+Verify Tomcat service status
+```sh
+ansible -i inventory/hosts web -b -m command -a "systemctl is-active tomcat"
+```
+
+Check Tomcat's listening port on the managed servers:
+```sh
+ansible -i inventory/hosts web -b -m shell -a "ss -lntp | grep ':8080'"
+```
+
+Check Tomcat's listening port on the managed servers:
+
+```sh
+ansible -i inventory/hosts web -b -m shell -a "ss -lntp | grep ':8080'"
+```
+
+# Access the Tomcat website
+
+Open the following URL using the current public IP address of the relevant EC2 instance:
+```sh
+http://<public-ip>:8080/
+```
+
+The root path / displays the default Tomcat page unless a custom application has replaced it.
+
+# [Deploy the sample website](ansible/roles/tomcat/files/sample-site/index.html)
+
+The role's sample website files are stored under:
+```text
+roles/tomcat/files/sample-site/
+```
+The deployment task copies these files to:
+```sh
+/opt/tomcat/webapps/sample/
+```
+Access the sample website at:
+```sh
+http://<public-ip>:8080/sample/
+```
 ## Workflow
 
 1. Provision the AWS infrastructure using Terraform.
